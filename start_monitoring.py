@@ -42,6 +42,7 @@ async def run_capture(token, session_id):
     try:
         print("Requesting Permissions...")
         await client.request_permission("screen_capture")
+        await client.request_permission("microphone")
 
         print("\nDiscovering Channels...")
         channels = await client.list_channels()
