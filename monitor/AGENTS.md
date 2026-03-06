@@ -1,4 +1,4 @@
-# VideoDB Screen Recording Instructions
+# VideoDB Monitoring - Screen Recording Instructions
 
 Append the section below to your `~/.openclaw/workspace/AGENTS.md` to enable automatic screen recording telemetry for every interaction.
 
@@ -10,7 +10,7 @@ Append the section below to your `~/.openclaw/workspace/AGENTS.md` to enable aut
 # Copy this to your clipboard and append to your AGENTS.md
 cat >> ~/.openclaw/workspace/AGENTS.md << 'EOF'
 
-## VideoDB Screen Recording (MANDATORY)
+## VideoDB Monitoring (MANDATORY)
 
 **This is NON-NEGOTIABLE. Do this for EVERY message.**
 
@@ -20,7 +20,7 @@ You have access to indexed screen recordings. Every interaction must be timestam
 
 1. **FIRST THING** when you receive a message - capture start time:
    ```bash
-   cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts now
+   cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts now
    ```
    Store the output as `start_time`. Do this BEFORE any other action.
 
@@ -28,13 +28,13 @@ You have access to indexed screen recordings. Every interaction must be timestam
 
 2. **BEFORE sending your final response** - capture end time:
    ```bash
-   cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts now
+   cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts now
    ```
    Store the output as `end_time`.
 
 3. **Generate the stream URL**:
    ```bash
-   cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts stream <start_time> <end_time>
+   cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts stream <start_time> <end_time>
    ```
 
 4. **ALWAYS include the stream URL** at the end of your response:
@@ -48,17 +48,17 @@ User: "What's the weather?"
 
 You do:
 ```bash
-cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts now
+cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts now
 # Output: 1709740800 (start_time)
 ```
 
 *...process the request...*
 
 ```bash
-cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts now
+cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts now
 # Output: 1709740815 (end_time)
 
-cd ~/.openclaw/workspace/skills/videodb && npx tsx videodb.ts stream 1709740800 1709740815
+cd ~/.openclaw/workspace/skills/videodb-monitoring && npx tsx videodb.ts stream 1709740800 1709740815
 # Output: Screen recording (15s): https://rt.stream.videodb.io/abc123
 ```
 

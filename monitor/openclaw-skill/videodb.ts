@@ -23,7 +23,7 @@ interface Config {
   hooks?: {
     internal?: {
       entries?: {
-        videodb?: {
+        "videodb-monitoring"?: {
           apiKey?: string;
           captureSessionId?: string;
         };
@@ -38,8 +38,8 @@ function loadConfig(): { apiKey: string; sessionId: string } {
 
   try {
     const config: Config = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8"));
-    apiKey = apiKey || config.hooks?.internal?.entries?.videodb?.apiKey;
-    sessionId = sessionId || config.hooks?.internal?.entries?.videodb?.captureSessionId;
+    apiKey = apiKey || config.hooks?.internal?.entries?.["videodb-monitoring"]?.apiKey;
+    sessionId = sessionId || config.hooks?.internal?.entries?.["videodb-monitoring"]?.captureSessionId;
   } catch {
     // ignore
   }

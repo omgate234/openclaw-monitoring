@@ -15,7 +15,7 @@ Record your screen and let your OpenClaw agent generate playable stream URLs for
 Set your VideoDB API key:
 
 ```bash
-openclaw config set hooks.internal.entries.videodb.apiKey 'sk-xxx'
+openclaw config set hooks.internal.entries.videodb-monitoring.apiKey 'sk-xxx'
 ```
 
 ### 2. Start the Screen Monitor
@@ -54,15 +54,15 @@ You should see:
 Copy the skill to your OpenClaw workspace:
 
 ```bash
-cp -r ~/Documents/Github/openclaw-monitoring/openclaw-skill ~/.openclaw/workspace/skills/videodb
-cd ~/.openclaw/workspace/skills/videodb
+cp -r ~/Documents/Github/openclaw-monitoring/openclaw-skill ~/.openclaw/workspace/skills/videodb-monitoring
+cd ~/.openclaw/workspace/skills/videodb-monitoring
 npm install
 ```
 
 ### 4. Restart OpenClaw Gateway
 
 ```bash
-openclaw restart
+openclaw gateway restart
 ```
 
 ### 5. Verify Skill is Loaded
@@ -71,7 +71,7 @@ openclaw restart
 openclaw skills list
 ```
 
-You should see `videodb` in the list.
+You should see `videodb-monitoring` in the list.
 
 ## Usage
 
@@ -128,9 +128,9 @@ The monitor will continue without audio. Screen recording still works.
 
 ### Skill not appearing
 
-1. Check the skill is in `~/.openclaw/workspace/skills/videodb/`
+1. Check the skill is in `~/.openclaw/workspace/skills/videodb-monitoring/`
 2. Verify `SKILL.md` exists in that directory
-3. Run `openclaw restart`
+3. Run `openclaw gateway restart`
 4. Run `openclaw skills list`
 
 ## File Structure

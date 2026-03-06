@@ -66,7 +66,7 @@ cd ~/.openclaw/workspace/skills/videodb && npm install
 **4. Restart OpenClaw:**
 
 ```bash
-openclaw restart
+openclaw gateway restart
 ```
 
 That's it! The agent will now include screen recording URLs in every response.

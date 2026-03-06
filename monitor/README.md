@@ -15,7 +15,7 @@ Screen capture daemon and skill for OpenClaw agents. Records your screen continu
 Set your VideoDB API key in OpenClaw config:
 
 ```bash
-openclaw config set hooks.internal.entries.videodb.apiKey 'sk-xxx'
+openclaw config set hooks.internal.entries.videodb-monitoring.apiKey 'sk-xxx'
 ```
 
 ### Step 2: Install Dependencies
@@ -50,16 +50,16 @@ In a new terminal, copy the skill to OpenClaw:
 
 ```bash
 cd monitor
-mkdir -p ~/.openclaw/workspace/skills/videodb
-cp -r openclaw-skill/* ~/.openclaw/workspace/skills/videodb
-cd ~/.openclaw/workspace/skills/videodb
+mkdir -p ~/.openclaw/workspace/skills/videodb-monitoring
+cp -r openclaw-skill/* ~/.openclaw/workspace/skills/videodb-monitoring
+cd ~/.openclaw/workspace/skills/videodb-monitoring
 npm install
 ```
 
 ### Step 5: Restart OpenClaw Gateway
 
 ```bash
-openclaw restart
+openclaw gateway restart
 ```
 
 Or if the gateway isn't running:
@@ -76,7 +76,7 @@ Check the skill is loaded:
 openclaw skills list
 ```
 
-You should see `videodb` in the list.
+You should see `videodb-monitoring` in the list.
 
 ## Usage
 
@@ -126,9 +126,9 @@ The monitor will continue without audio. Screen recording still works.
 
 ### Skill not appearing
 
-1. Verify skill is in `~/.openclaw/workspace/skills/videodb/`
+1. Verify skill is in `~/.openclaw/workspace/skills/videodb-monitoring/`
 2. Check `SKILL.md` exists in that directory
-3. Run `openclaw restart`
+3. Run `openclaw gateway restart`
 4. Run `openclaw skills list`
 
 ## File Structure

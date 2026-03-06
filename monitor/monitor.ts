@@ -25,7 +25,7 @@ interface OpenClawConfig {
   hooks?: {
     internal?: {
       entries?: {
-        videodb?: {
+        "videodb-monitoring"?: {
           apiKey?: string;
           captureSessionId?: string;
         };
@@ -48,14 +48,14 @@ function readOpenClawConfig(): OpenClawConfig {
 function getApiKey(): string | undefined {
   const config = readOpenClawConfig();
   return (
-    config.hooks?.internal?.entries?.videodb?.apiKey ||
+    config.hooks?.internal?.entries?.["videodb-monitoring"]?.apiKey ||
     process.env.VIDEODB_API_KEY ||
     process.env.VIDEO_DB_API_KEY
   );
 }
 
 function updateSessionId(sessionId: string): void {
-  const configPath = "hooks.internal.entries.videodb.captureSessionId";
+  const configPath = "hooks.internal.entries.videodb-monitoring.captureSessionId";
   try {
     execSync(`openclaw config set ${configPath} '${sessionId}'`, {
       timeout: 10000,
@@ -236,7 +236,7 @@ async function main() {
   if (!apiKey) {
     log("API key not found");
     console.error("API key not found. Set it via:");
-    console.error("  openclaw config set hooks.internal.entries.videodb.apiKey 'sk-xxx'");
+    console.error("  openclaw config set hooks.internal.entries.videodb-monitoring.apiKey 'sk-xxx'");
     process.exit(1);
   }
 
